@@ -1,6 +1,7 @@
 # BRSpeech-DF: A Deep Fake Synthetic Speech Dataset for Portuguese Zero-Shot TTS
 
-The link to download the dataset will be available soon.
+The link to download the dataset here: 
+[Google Drive](https://drive.google.com/file/d/1PjfYMaPtwH2AMngOysBfYEwvn0b6efYJ/view?usp=sharing).
 
 Preview of dataset: https://speechdeveloper.github.io/
 
