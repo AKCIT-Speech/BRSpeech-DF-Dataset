@@ -1,9 +1,32 @@
 # BRSpeech-DF: A Deep Fake Synthetic Speech Dataset for Portuguese Zero-Shot TTS
 
-The link to download the dataset here: 
-[Google Drive](https://drive.google.com/file/d/1PjfYMaPtwH2AMngOysBfYEwvn0b6efYJ/view?usp=sharing).
+## Dataset
 
-Preview of dataset: https://speechdeveloper.github.io/
+BRSpeech-DF is hosted on Hugging Face: **[AKCIT-Deepfake/BRSpeech-DF](https://huggingface.co/datasets/AKCIT-Deepfake/BRSpeech-DF)**
+
+It is available in two versions:
+
+| Config | Samples | Use it for |
+| :----- | ------: | :--------- |
+| **`filtered`** *(default)* | 458,411 | New experiments. Removes 726 problematic samples and adds `model`, `speaker`, `audio_id` and `duration` columns. |
+| `original` | 459,137 | Reproducing the paper. This is the version used for all results and scores in this repository. |
+
+The 726 removed samples are 221 bona fide utterances with an empty transcript, the 430 spoofs generated from them, and 75 synthetic samples longer than 35 s. The full list, with the reason for each sample, is in [`removed_samples.csv`](https://huggingface.co/datasets/AKCIT-Deepfake/BRSpeech-DF/blob/main/removed_samples.csv).
+
+```python
+from datasets import load_dataset
+
+ds = load_dataset("AKCIT-Deepfake/BRSpeech-DF")              # filtered (default)
+ds = load_dataset("AKCIT-Deepfake/BRSpeech-DF", "original")  # version used in the paper
+```
+
+Snapshots are pinned with tags: `revision="v1.0"` is the first release and `revision="v1.1"` adds the `filtered` config.
+
+> **Note:** the metadata in [`data/metadata/brspeech_df/`](data/metadata/brspeech_df/) and the precomputed scores in [`data/scores/`](data/scores/) refer to the **`original`** version (459,137 samples). In this repository the validation split is called `dev`; on Hugging Face it is called `validation`.
+
+Alternative download: [Google Drive](https://drive.google.com/file/d/1PjfYMaPtwH2AMngOysBfYEwvn0b6efYJ/view?usp=sharing)
+
+Preview of the dataset: https://speechdeveloper.github.io/
 
 
 # Deepfake Detection Models (df_models)
